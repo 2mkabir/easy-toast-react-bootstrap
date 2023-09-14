@@ -1,6 +1,6 @@
 {
   "name": "easy-toast-react-bootstrap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easily use Toast React Bootstrap",
   "main": "index.js",
   "scripts": {
@@ -25,5 +25,6 @@
     "bootstrap": "^5.3.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0"
-  }
+  },
+  "devDependencies": {}
 }
