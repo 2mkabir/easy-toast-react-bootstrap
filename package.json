@@ -1,0 +1,29 @@
+{
+  "name": "easy-toast-react-bootstrap",
+  "version": "1.0.0",
+  "description": "Easily use Toast React Bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2mkabir/easy-toast-react-bootstrap.git"
+  },
+  "keywords": [
+    "toast",
+    "react",
+    "bootstrap"
+  ],
+  "author": "Mohammad Mahdi Kabir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2mkabir/easy-toast-react-bootstrap/issues"
+  },
+  "homepage": "https://github.com/2mkabir/easy-toast-react-bootstrap#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0"
+  }
+}

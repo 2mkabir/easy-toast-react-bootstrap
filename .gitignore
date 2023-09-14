@@ -51,3 +51,8 @@ fabric.properties
 
 # *.iml
 # modules.xml
+
+.idea/deployment.xml
+.idea/easy-toast-react-bootstrap.iml
+.idea/modules.xml
+/.idea
