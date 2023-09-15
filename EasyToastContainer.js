@@ -1,7 +1,7 @@
-import {Children, cloneElement, createContext, isValidElement, useContext, useReducer} from "react";
+import {Children, cloneElement, isValidElement, useReducer} from "react";
 import {Toast, ToastContainer} from "react-bootstrap";
+import ToastContext from "./ToastContext";
 
-const ToastContext = createContext([])
 const handleToastList = (toastList, action) => {
     if (action.type === "addTop") {
         const _toastList = [...toastList];
@@ -17,7 +17,7 @@ const handleToastList = (toastList, action) => {
         return toastList;
     }
 }
-export const EasyToastContainer = ({children, ...props}) => {
+const EasyToastContainer = ({children, ...props}) => {
     const [toastList, dispatchToastList] = useReducer(handleToastList, [])
     const showToast = (toastElement, addPosition) => {
         dispatchToastList({
@@ -47,25 +47,24 @@ export const EasyToastContainer = ({children, ...props}) => {
                 children: addToastIdAttribute(child.props.children, toastId)
             })
         })
-    };
+    }
     return (
-        <ToastContext.Provider value={[showToast, hideToast]}>
-            <ToastContainer {...props}>
-                {toastList?.map((toast) => (
-                    <Toast
-                        {...toast.element.props}
-                        key={toast.id}
-                        onClose={() => hideToast(null, toast.id)}
-                    >
-                        {addToastIdAttribute(toast.element.props.children, toast.id)}
-                    </Toast>
-                ))}
-            </ToastContainer>
-            {children}
-        </ToastContext.Provider>
+        <>
+            <ToastContext.Provider value={[showToast, hideToast]}>
+                <ToastContainer {...props}>
+                    {toastList?.map((toast) => (
+                        <Toast
+                            {...toast.element.props}
+                            key={toast.id}
+                            onClose={() => hideToast(null, toast.id)}
+                        >
+                            {addToastIdAttribute(toast.element.props.children, toast.id)}
+                        </Toast>
+                    ))}
+                </ToastContainer>
+                {children}
+            </ToastContext.Provider>
+        </>
     )
 }
-export const useEasyToast = () => {
-    const [showToast, hideToast] = useContext(ToastContext);
-    return [showToast, hideToast];
-}
+export default EasyToastContainer;
