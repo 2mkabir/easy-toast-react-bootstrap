@@ -1,7 +1,7 @@
-import {Children, cloneElement, isValidElement, useReducer} from "react";
+import {Children, cloneElement, createContext, isValidElement, useContext, useReducer} from "react";
 import {Toast, ToastContainer} from "react-bootstrap";
-import ToastContext from "./ToastContext";
 
+const ToastContext = createContext([])
 const handleToastList = (toastList, action) => {
     if (action.type === "addTop") {
         const _toastList = [...toastList];
@@ -17,7 +17,7 @@ const handleToastList = (toastList, action) => {
         return toastList;
     }
 }
-const EasyToastContainer = ({children, ...props}) => {
+export const EasyToastContainer = ({children, ...props}) => {
     const [toastList, dispatchToastList] = useReducer(handleToastList, [])
     const showToast = (toastElement, addPosition) => {
         dispatchToastList({
@@ -67,4 +67,7 @@ const EasyToastContainer = ({children, ...props}) => {
         </>
     )
 }
-export default EasyToastContainer;
+export const useEasyToast = () => {
+    const [showToast, hideToast] = useContext(ToastContext);
+    return [showToast, hideToast];
+}
