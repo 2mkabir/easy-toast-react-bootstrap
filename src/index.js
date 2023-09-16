@@ -49,22 +49,20 @@ export const EasyToastContainer = ({children, ...props}) => {
         })
     }
     return (
-        <>
-            <ToastContext.Provider value={[showToast, hideToast]}>
-                <ToastContainer {...props}>
-                    {toastList?.map((toast) => (
-                        <Toast
-                            {...toast.element.props}
-                            key={toast.id}
-                            onClose={() => hideToast(null, toast.id)}
-                        >
-                            {addToastIdAttribute(toast.element.props.children, toast.id)}
-                        </Toast>
-                    ))}
-                </ToastContainer>
-                {children}
-            </ToastContext.Provider>
-        </>
+        <ToastContext.Provider value={[showToast, hideToast]}>
+            <ToastContainer {...props}>
+                {toastList?.map((toast) => (
+                    <Toast
+                        {...toast.element.props}
+                        key={toast.id}
+                        onClose={() => hideToast(null, toast.id)}
+                    >
+                        {addToastIdAttribute(toast.element.props.children, toast.id)}
+                    </Toast>
+                ))}
+            </ToastContainer>
+            {children}
+        </ToastContext.Provider>
     )
 }
 export const useEasyToast = () => {
