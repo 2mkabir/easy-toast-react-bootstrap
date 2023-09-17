@@ -7,11 +7,11 @@ An easy and flexible wrapper for [Toast React Bootstrap](https://react-bootstrap
 ## Installation
 
 ```bash
-  npm install easy-toast-react-bootstrap
+npm install easy-toast-react-bootstrap
 ```
 or
 ```bash
-  yarn add easy-toast-react-bootstrap
+yarn add easy-toast-react-bootstrap
 ```
 
 ## Usage
