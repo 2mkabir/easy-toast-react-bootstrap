@@ -1,5 +1,5 @@
-import {Children, cloneElement, createContext, isValidElement, useContext, useReducer} from "react";
-import {Toast, ToastContainer} from "react-bootstrap";
+import {cloneElement, createContext, isValidElement, useContext, useReducer} from "react";
+import {ToastContainer} from "react-bootstrap";
 
 const ToastContext = createContext([])
 const handleToastList = (toastList, action) => {
@@ -18,54 +18,60 @@ const handleToastList = (toastList, action) => {
     }
 }
 export const EasyToastContainer = ({children, ...props}) => {
-    const [toastList, dispatchToastList] = useReducer(handleToastList, [])
+    const [toastList, dispatchToastList] = useReducer(handleToastList, []);
     const showToast = (toastElement, addPosition) => {
+        const toastId = Math.random().toString(16).slice(2);
         dispatchToastList({
             type: addPosition === "bottom" ? "addBottom" : "addTop",
             data: {
-                id: Math.random().toString(16).slice(2),
-                element: toastElement,
+                id: toastId,
+                element: handleToastElement(toastElement, toastId),
             }
         });
     }
-    const hideToast = (event, toastId) => {
-        if (!toastId && event) {
-            toastId = event.target.getAttribute("data-toast-id");
+    const closeToast = (event, toastId) => {
+        if(event && !toastId) {
+            let element = event.target;
+            while (element && !element.hasAttribute("data-toast-id")) {
+                element = element.parentElement;
+            }
+            toastId = element.getAttribute("data-toast-id");
         }
-        dispatchToastList({
-            type: "remove",
-            data: {
-                id: toastId
-            },
-        });
+        if(toastId) {
+            dispatchToastList({
+                type: "remove",
+                data: {
+                    id: toastId
+                },
+            });
+        }
     }
-    const addToastIdAttribute = (children, toastId) => {
-        return Children.map(children, (child) => {
-            if (!isValidElement(child)) return child;
-            return cloneElement(child, {
-                "data-toast-id": toastId,
-                children: addToastIdAttribute(child.props.children, toastId)
-            })
-        })
+    const handleToastElement = (toastElement, toastId) => {
+        if(isValidElement(toastElement) && typeof toastElement.type === 'function'){
+            return handleToastElement(toastElement.type(toastElement.props), toastId);
+        } else {
+            return cloneElement(
+                toastElement,
+                {
+                    key: toastId,
+                    "data-toast-id": toastId,
+                    onClose: () => closeToast(null, toastId)
+                },
+            )
+        }
     }
     return (
-        <ToastContext.Provider value={[showToast, hideToast]}>
-            <ToastContainer {...props}>
-                {toastList?.map((toast) => (
-                    <Toast
-                        {...toast.element.props}
-                        key={toast.id}
-                        onClose={() => hideToast(null, toast.id)}
-                    >
-                        {addToastIdAttribute(toast.element.props.children, toast.id)}
-                    </Toast>
-                ))}
-            </ToastContainer>
-            {children}
-        </ToastContext.Provider>
+        <>
+            <ToastContext.Provider value={[showToast, closeToast]}>
+                <ToastContainer {...props}>
+                    {toastList?.map(toast => (toast.element))}
+                </ToastContainer>
+                {children}
+            </ToastContext.Provider>
+        </>
     )
 }
 export const useEasyToast = () => {
-    const [showToast, hideToast] = useContext(ToastContext);
-    return [showToast, hideToast];
+    const [showToast, closeToast] = useContext(ToastContext);
+    return [showToast, closeToast];
 }
