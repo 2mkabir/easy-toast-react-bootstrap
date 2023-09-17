@@ -20,7 +20,7 @@ just 2 steps!
 
 ### Step 1: EasyToastContainer
 
-Add the `EasyToastContainer` component as top level as possible.
+Add `EasyToastContainer` component as top level as possible.
 
 Example:
 
@@ -35,11 +35,11 @@ export function App() {
     )
 }
 ```
-Optional props of the `EasyToastContainer` exactly like [ToastContainer React Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toastcontainer).
+Optional props of `EasyToastContainer` exactly like [ToastContainer React Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toastcontainer).
 
 ### Step 2: useEasyToast
 
-the `useEasyToast` returns an array with exactly two values:
+`useEasyToast` hook returns an array with exactly two values:
 
 `showToast` function: Call it Anywhere you need to show a toast. Give [Toast React-Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toast) component to the first argument.
 
