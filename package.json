@@ -1,0 +1,37 @@
+{
+  "name": "easy-toast-react-bootstrap",
+  "version": "0.9.1",
+  "description": "An easy and flexible wrapper for Toast React Bootstrap, enabling you to create toasts from any part of your application with just a few easy steps.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2mkabir/easy-toast-react-bootstrap.git"
+  },
+  "keywords": ["Toast", "React", "Bootstrap"],
+  "author": "Mohammad Mahdi Kabir",
+  "bugs": {
+    "url": "https://github.com/2mkabir/easy-toast-react-bootstrap/issues"
+  },
+  "homepage": "https://github.com/2mkabir/easy-toast-react-bootstrap",
+  "type": "module",
+  "source": "src/index.js",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle build --globals react=React,react-dom=ReactDOM --jsx cloneElement,createContext,isValidElement,useContext,useReducer --jsxFragment Fragment --jsxImportSource react",
+    "dev": "microbundle watch"
+  },
+  "devDependencies": {
+    "microbundle": "^0.15.1"
+  },
+  "peerDependencies": {
+    "bootstrap": "^5.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-bootstrap": "^2.8.0"
+  }
+}
