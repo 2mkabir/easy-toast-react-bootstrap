@@ -41,9 +41,9 @@ Optional props of `EasyToastContainer` exactly like [ToastContainer React Bootst
 
 `useEasyToast` hook returns an array with exactly two values:
 
-`showToast(<Toast>...</Toast>)` function: Call it Anywhere you need to show a toast. Give [`<Toast>...</Toast>`](https://react-bootstrap.github.io/docs/components/toasts#toast) component as the first argument.
+1. `showToast(<Toast>...</Toast>)` function: Call it Anywhere you need to show a toast. Give [`<Toast>...</Toast>`](https://react-bootstrap.github.io/docs/components/toasts#toast) component as the first argument.
 
-`closeToast(event)` function: Call it for close the toast in `onClick` prop of `<CloseButton/>` or any button. Don't forget to give event of `onClick` as the first argument.
+2. `closeToast(event)` function: Call it for close the toast in `onClick` prop of `<CloseButton/>` or any button. Don't forget to give event of `onClick` as the first argument.
 
 Example:
 ```javascript
