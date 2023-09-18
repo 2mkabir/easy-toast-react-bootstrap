@@ -1,6 +1,6 @@
 {
   "name": "easy-toast-react-bootstrap",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "An easy and flexible wrapper for Toast React Bootstrap, enabling you to create toasts from any part of your application with just a few easy steps.",
   "repository": {
     "type": "git",
