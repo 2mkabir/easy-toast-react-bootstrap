@@ -8,6 +8,7 @@
   },
   "keywords": ["Toast", "React", "Bootstrap"],
   "author": "Mohammad Mahdi Kabir",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/2mkabir/easy-toast-react-bootstrap/issues"
   },
