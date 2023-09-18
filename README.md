@@ -41,9 +41,9 @@ Optional props of `EasyToastContainer` exactly like [ToastContainer React Bootst
 
 `useEasyToast` hook returns an array with exactly two values:
 
-`showToast` function: Call it Anywhere you need to show a toast. Give [Toast React-Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toast) component to the first argument.
+`showToast(<Toast>...</Toast>)` function: Call it Anywhere you need to show a toast. Give [`<Toast>...</Toast>`](https://react-bootstrap.github.io/docs/components/toasts#toast) component as the first argument.
 
-`closeToast` function: Call it for close toast in `onClick` prop of `CloseButton`.
+`closeToast(event)` function: Call it for close the toast in `onClick` prop of `<CloseButton/>` or any button. Don't forget to give event of `onClick` as the first argument.
 
 Example:
 ```javascript
@@ -77,8 +77,8 @@ Example image:
 
 ## Additional Options
 
-- `showToast` function has second argument for when multiple toasts exists: default is `"addTop"`. If you want the new toast added from bottom of toasts set it `"addBottom"`.
-- You can wrapper [Toast React-Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toast) component inside your custom component and pass it to `showToast` function.
+- `showToast()` function has second argument for when multiple toasts exists: default is `"addTop"`. If you want the new toast added from bottom of other toasts set it `"addBottom"`.
+- You can to wrap [`<Toast>...</Toast>`](https://react-bootstrap.github.io/docs/components/toasts#toast) component inside your custom component and then give it to `showToast()` function.
   Example:
 
 MyComponent.js
