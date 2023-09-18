@@ -20,7 +20,7 @@ just 2 steps!
 
 ### Step 1: EasyToastContainer
 
-Add `EasyToastContainer` component as top level as possible.
+Add `<EasyToastContainer>` component as top level as possible.
 
 Example:
 
@@ -35,7 +35,7 @@ export function App() {
     )
 }
 ```
-Optional props of `EasyToastContainer` exactly like [ToastContainer React Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toastcontainer).
+Optional props of `<EasyToastContainer>` exactly like [`<ToastContainer>` in React Bootstrap](https://react-bootstrap.github.io/docs/components/toasts#toastcontainer).
 
 ### Step 2: useEasyToast
 
@@ -78,7 +78,7 @@ Example image:
 ## Additional Options
 
 - `showToast()` function has second argument for when multiple toasts exists: default is `"addTop"`. If you want the new toast added from bottom of other toasts set it `"addBottom"`.
-- You can to wrap [`<Toast>...</Toast>`](https://react-bootstrap.github.io/docs/components/toasts#toast) component inside your custom component and then give it to `showToast()` function.
+- You can wrap [`<Toast>...</Toast>`](https://react-bootstrap.github.io/docs/components/toasts#toast) component inside your custom component and then give it to `showToast()` function.
   Example:
 
 MyComponent.js
@@ -125,7 +125,7 @@ export default MyCustomToast;
 
 ```
 
-- `onClose` prop of [Toast React-Bootstarp](https://react-bootstrap.github.io/docs/components/toasts#toast) component not needed and deactive.
+- `onClose` prop of [`<Toast>` React-Bootstarp](https://react-bootstrap.github.io/docs/components/toasts#toast) component not needed and deactive.
 ## Contributing
 
 If you would like to see additions/changes to this package you are always welcome to add some code or improve it.
